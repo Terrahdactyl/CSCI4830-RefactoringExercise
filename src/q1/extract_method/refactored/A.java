@@ -2,37 +2,37 @@ package q1.extract_method.refactored;
 
 import java.util.List;
 
+//import q1.extract_method.org.Edge;
+
 public class A {
    Node m1(List<Node> nodes, String p) {
-      // TODO: Your answer
-      // other implementation
+      extractedMethod(nodes, p);
       return null;
    }
 
    Edge m2(List<Edge> edgeList, String p) {
-      // TODO: Your answer
-      // other implementation
+	  extractedMethod(edgeList, p);
       return null;
    }
 
-   // TODO: Your answer
-   // ? extractedMethod(?) {
-   //
-   // }
-}
-
-class Node {
-   String name;
-
-   public boolean contains(String p) {
-      return name.contains(p);
+   <T extends Graph> void extractedMethod(List<T> objs, String p) {
+	   for (T obj : objs) {
+			if (obj.contains(p))
+				System.out.println(obj);
+		}
    }
 }
 
-class Edge {
-   String name;
+class Graph {
+	String name;
+	
+	public boolean contains(String p) {
+		return name.contains(p);
+	}
+}
+   
+class Node extends Graph{
+}
 
-   public boolean contains(String p) {
-       return name.contains(p);
-   }
+class Edge extends Graph{
 }
